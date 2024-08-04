@@ -6,7 +6,7 @@ from langchain_core.messages import BaseMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
-model = ChatOpenAI(model="gpt-4o-mini")
+ai_model = "gpt-4o-mini"
 
 system_template = """
 You are an AI assistant tasked with generating commit messages that strictly adhere to the commitizen conventions. Please follow these instructions to create commit messages:
@@ -136,6 +136,7 @@ def generate_commit_message() -> Iterator[BaseMessage] | None:
         ]
     )
 
+    model = ChatOpenAI(model=ai_model)
     chain = prompt_template | model
 
     return chain.stream({"diff": diff})
