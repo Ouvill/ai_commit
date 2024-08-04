@@ -111,7 +111,7 @@ def get_git_change(repo: Repo) -> Optional[str]:
             return None
 
 
-def generate_commit_message():
+def generate_commit_message() -> Iterator[BaseMessage] | None:
     """
     Generates a commit message based on the user's changes.
 
@@ -138,14 +138,21 @@ def generate_commit_message():
 
     chain = prompt_template | model
 
-    for r in chain.stream({"diff": diff}):
-        print(r.content, end="")
+    return chain.stream({"diff": diff})
+
+
+def print_message(messages: Iterator[BaseMessage]):
+    for message in messages:
+        print(message.content, end="")
 
 
 def main():
     check_api_key()
 
-    generate_commit_message()
+    result = generate_commit_message()
+
+    if result is not None:
+        print_message(result)
 
     print()
 
