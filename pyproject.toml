@@ -23,7 +23,7 @@ managed = true
 dev-dependencies = [
     "notebook>=7.2.1",
     "nbstripout>=0.7.1",
-    "cx-freeze>=7.2.0",
+    "pyinstaller>=6.9.0",
 ]
 
 [tool.hatch.metadata]
@@ -32,7 +32,3 @@ allow-direct-references = true
 [tool.hatch.build.targets.wheel]
 packages = ["src/ai_commit"]
 
-[tool.cxfreeze]
-executables = [
-    { script = "src/ai_commit/ai-commit.py", base = "console" }
-]
