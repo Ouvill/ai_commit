@@ -31,3 +31,8 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ai_commit"]
+
+[tool.cxfreeze]
+executables = [
+    { script = "src/ai_commit/ai-commit.py", base = "console" }
+]
