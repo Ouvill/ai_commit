@@ -52,6 +52,7 @@ charset-normalizer==3.3.2
     # via requests
 comm==0.2.2
     # via ipykernel
+cx-freeze==7.2.0
 debugpy==1.8.3
     # via ipykernel
 decorator==5.1.1
@@ -64,6 +65,8 @@ executing==2.0.1
     # via stack-data
 fastjsonschema==2.20.0
     # via nbformat
+filelock==3.15.4
+    # via cx-freeze
 fqdn==1.5.1
     # via jsonschema
 frozenlist==1.4.1
@@ -204,6 +207,8 @@ pandocfilters==1.5.1
     # via nbconvert
 parso==0.8.4
     # via jedi
+patchelf==0.17.2.1
+    # via cx-freeze
 pexpect==4.9.0
     # via ipython
 platformdirs==4.2.2
@@ -268,7 +273,8 @@ rpds-py==0.19.1
     # via referencing
 send2trash==1.8.3
     # via jupyter-server
-setuptools==72.1.0
+setuptools==70.3.0
+    # via cx-freeze
     # via jupyterlab
 six==1.16.0
     # via asttokens
@@ -340,5 +346,7 @@ webencodings==0.5.1
     # via tinycss2
 websocket-client==1.8.0
     # via jupyter-server
+wheel==0.43.0
+    # via cx-freeze
 yarl==1.9.4
     # via aiohttp

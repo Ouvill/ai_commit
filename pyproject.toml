@@ -23,6 +23,7 @@ managed = true
 dev-dependencies = [
     "notebook>=7.2.1",
     "nbstripout>=0.7.1",
+    "cx-freeze>=7.2.0",
 ]
 
 [tool.hatch.metadata]
