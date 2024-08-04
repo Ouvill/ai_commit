@@ -5,7 +5,9 @@ description = "Add your description here"
 authors = [
     { name = "Ouvill", email = "contact@ouvill.net" }
 ]
-dependencies = []
+dependencies = [
+    "gitpython>=3.1.43",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 
