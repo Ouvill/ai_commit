@@ -1,53 +1,18 @@
-# py-ai-commit
+default_model = "gpt-4o-mini"
 
-Automatic generation of commit messages
-
-## Install
-
-```bash
-pip install py-ai-commit
-```
-
-## Usage
-
-Set your OpenAI API key as an environment variable.
-
-Add this to your `.bashrc` or similar:
-
-```bash
-export OPENAI_API_KEY=sk-******************************
-```
-
-Execute the command in a git repository to create a commit message.
-
-```bash
-ai-commit
-```
-
-## Configuration
-
-You can configure the AI model and Commit message generation prompt
-
-create a `.ai-commit.toml` file in the root of your repository or in your home directory.
-
-Here is an example configuration file:
-
-````toml 
-model = "gpt-4o-mini"
-prompt = """
+default_template = """
 You are an AI assistant tasked with generating commit messages that strictly adhere to the Conventional Commits specification. Your role is to create clear and consistent commit messages based on the code changes provided by the user. This task requires you to accurately identify the type of change and provide a concise yet informative description.
 
 ## Instructions
 
 ### Always structure your commit messages in the following format:
+   ```
+   <type>[optional scope]: <description>
 
-```
-<type>[optional scope]: <description>
+   [optional body]
 
-[optional body]
-
-[optional footer(s)]
-```
+   [optional footer(s)]
+   ```
 
 ### Use one of the following types for `<type>`:
    - feat: A new feature
@@ -81,13 +46,48 @@ The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL 
     16. BREAKING-CHANGE MUST be synonymous with BREAKING CHANGE, when used as a token in a footer.
 
 Please generate appropriate commit messages based on the changes provided by the user, following these instructions.
+
+## Example
+
+### Commit message with description and breaking change footer
+
+feat: allow provided config object to extend other configs
+
+BREAKING CHANGE: `extends` key in config file is now used for extending other config files
+
+
+### Commit message with ! to draw attention to breaking change
+
+feat!: send an email to the customer when a product is shipped
+
+### Commit message with scope and ! to draw attention to breaking change
+
+feat(api)!: send an email to the customer when a product is shipped
+
+### Commit message with both ! and BREAKING CHANGE footer
+
+chore!: drop support for Node 6
+
+BREAKING CHANGE: use JavaScript features not available in Node 6.
+
+### Commit message with no body
+
+docs: correct spelling of CHANGELOG
+
+### Commit message with scope
+
+feat(lang): add Polish language
+
+### Commit message with multi-paragraph body and multiple footers
+
+fix: prevent racing of requests
+
+Introduce a request id and a reference to latest request. Dismiss
+incoming responses other than from latest request.
+
+Remove timeouts which were used to mitigate the racing issue but are
+obsolete now.
+
+Reviewed-by: Z
+Refs: #123
 """
-````
-
-## Roadmap
-
-- [ ] Add support for other AI models
-- [x] Add configuration options
-- [ ] Add custom templates
-- [ ] Add argument parsing
-- [ ] Allow editing generated commit messages in an editor after creation
