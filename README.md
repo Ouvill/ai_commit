@@ -23,3 +23,11 @@ Execute the command in a git repository to create a commit message.
 ```bash
 ai-commit
 ```
+
+## Roadmap
+
+- [ ] Add support for other AI models
+- [ ] Add configuration options
+- [ ] Add custom templates
+- [ ] Add argument parsing
+- [ ] Allow editing generated commit messages in an editor after creation
