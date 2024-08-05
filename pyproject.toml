@@ -19,6 +19,8 @@ requires-python = ">= 3.8"
 [project.urls]
 Homepage = "https://github.com/Ouvill/ai_commit"
 Issues = "https://github.com/Ouvill/ai_commit/issues"
+Repository = "https://github.com/Ouvill/ai_commit"
+Changelog = "https://github.com/Ouvill/ai_commit/blob/main/CHANGELOG.md"
 
 [project.scripts]
 ai-commit = "ai_commit.ai_commit:main"
