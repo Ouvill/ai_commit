@@ -5,7 +5,9 @@ import os
 import json
 from unittest.mock import Mock, patch
 
-from ai_commit.config import AppConfig, JsonConfigRepository, ConfigService
+import tomlkit
+
+from ai_commit.config import AppConfig, JsonConfigRepository, ConfigService, TomlConfigRepository
 
 
 @pytest.fixture
@@ -18,6 +20,15 @@ def mock_json_file(tmp_path):
     config_file = tmp_path / "config.json"
     config_data = {"prompt": "Test prompt", "model": "gpt-4-test"}
     config_file.write_text(json.dumps(config_data))
+    return config_file
+
+
+@pytest.fixture
+def mock_toml_file(tmp_path):
+    config_file = tmp_path / "config.toml"
+    config_data = {"prompt": "Test prompt", "model": "gpt-4-test"}
+    with open(config_file, "w") as f:
+        tomlkit.dump(config_data, f)
     return config_file
 
 
@@ -47,6 +58,15 @@ def test_json_config_repository_load_non_existent():
     assert loaded_config is None
 
 
+def test_toml_config_repository_load(mock_toml_file):
+    repo = TomlConfigRepository(mock_toml_file)
+    loaded_config = repo.load()
+
+    assert isinstance(loaded_config, AppConfig)
+    assert loaded_config.prompt == "Test prompt"
+    assert loaded_config.model == "gpt-4-test"
+
+
 def test_config_service_save_config(mock_config):
     mock_repo = Mock(spec=JsonConfigRepository)
     service = ConfigService(mock_repo)
@@ -67,4 +87,3 @@ def test_config_service_get_config():
     assert config.prompt == "Test prompt"
     assert config.model == "gpt-4-test"
     mock_repo.load.assert_called_once()
-

@@ -5,6 +5,7 @@ from dataclasses_json import dataclass_json
 from typing import Optional
 import os
 from pathlib import Path
+from tomlkit import parse
 
 from ai_commit.default_config import default_model, default_template
 
@@ -16,7 +17,7 @@ class AppConfig:
     model: str = "gpt-4o-mini"
 
 
-config_file_name = ".ai-commit.json"
+config_file_name = ".ai-commit.toml"
 
 
 class ConfigRepository(ABC):
@@ -57,6 +58,25 @@ class JsonConfigRepository(ConfigRepository):
             return AppConfig.from_json(f.read())
 
 
+class TomlConfigRepository(ConfigRepository):
+    def __init__(self, file_path: Path):
+        self.file_path = file_path
+
+    def load(self) -> Optional[AppConfig]:
+        if not os.path.exists(self.file_path):
+            return None
+
+        with open(self.file_path, "r") as f:
+            doc = parse(f.read())
+            return AppConfig(
+                prompt=doc["prompt"] or default_template,
+                model=doc["model"] or default_model,
+            )
+
+    def save(self, config: AppConfig) -> None:
+        pass
+
+
 class ConfigService:
     def __init__(self, repository: ConfigRepository):
         self.repository = repository
@@ -67,6 +87,6 @@ class ConfigService:
     def get_config(self) -> AppConfig:
         try:
             return self.repository.load() or AppConfig(prompt=default_template, model=default_model)
-        except Exception:
-            print("Error loading config file")
+        except Exception as e:
+            print("Error loading config file", e)
             return AppConfig(prompt=default_template, model=default_model)

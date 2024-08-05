@@ -6,7 +6,7 @@ from langchain_core.messages import BaseMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
-from ai_commit.config import JsonConfigRepository, ConfigService, default_config_file_path, AppConfig
+from ai_commit.config import TomlConfigRepository, ConfigService, default_config_file_path, AppConfig
 
 user_template = """
 The git diff is below.
@@ -109,7 +109,7 @@ def print_message(messages: Iterator[BaseMessage]):
 
 
 def main():
-    config_service = ConfigService(JsonConfigRepository(default_config_file_path()))
+    config_service = ConfigService(TomlConfigRepository(default_config_file_path()))
     config: AppConfig = config_service.get_config()
 
     check_api_key()
