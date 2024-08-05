@@ -11,6 +11,7 @@ dependencies = [
     "langchain-openai>=0.1.20",
     "python-dotenv>=1.0.1",
     "dataclasses-json>=0.6.7",
+    "tomlkit>=0.13.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
