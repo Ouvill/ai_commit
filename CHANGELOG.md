@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.0](https://github.com/Ouvill/ai_commit/compare/v0.1.3...v0.2.0) (2024-08-05)
+
+
+### Features
+
+* **config:** load config  ([#10](https://github.com/Ouvill/ai_commit/issues/10)) ([5592c12](https://github.com/Ouvill/ai_commit/commit/5592c1296397aaf4c9a8c5ed86ef336241bff257))
+
+
+### Performance Improvements
+
+* update prompt ([#11](https://github.com/Ouvill/ai_commit/issues/11)) ([4e64ac4](https://github.com/Ouvill/ai_commit/commit/4e64ac40629932cb11844a5b937b9059171b4452))
+
+
+### Documentation
+
+* **README:** Update caution note for development status ([44d9e86](https://github.com/Ouvill/ai_commit/commit/44d9e86c7a8cc73bac443833562adeae2bd7b982))
+
 ## [0.1.3](https://github.com/Ouvill/ai_commit/compare/v0.1.2...v0.1.3) (2024-08-05)
 
 
