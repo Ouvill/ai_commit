@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/Ouvill/ai_commit/compare/v0.1.3...v1.0.0) (2024-08-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* The configuration file format has changed from JSON to TOML
+
+### Features
+
+* add config file ([720bee2](https://github.com/Ouvill/ai_commit/commit/720bee2ab969184d76a4899682d77bdb5b05d438))
+
 ## [0.1.3](https://github.com/Ouvill/ai_commit/compare/v0.1.2...v0.1.3) (2024-08-05)
 
 
