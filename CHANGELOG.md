@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/Ouvill/ai_commit/compare/v0.1.2...v0.1.3) (2024-08-05)
+
+
+### Documentation
+
+* **README:** Update package name from ai-commit to py-ai-commit ([711f5ce](https://github.com/Ouvill/ai_commit/commit/711f5ce482f5d94804e08cafaec8cb0c098582df))
+
 ## [0.1.2](https://github.com/Ouvill/ai_commit/compare/v0.1.1...v0.1.2) (2024-08-05)
 
 
