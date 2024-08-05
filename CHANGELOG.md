@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/Ouvill/ai_commit/compare/v0.1.0...v0.1.1) (2024-08-05)
+
+
+### Documentation
+
+* Update README to include roadmap section ([f7e0d60](https://github.com/Ouvill/ai_commit/commit/f7e0d603e81376f4dc8aeecd24fd4ae23ad64d94))
+
 ## 0.1.0 (2024-08-05)
 
 
