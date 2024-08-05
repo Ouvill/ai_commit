@@ -1,11 +1,11 @@
-# ai-commit
+# py-ai-commit
 
 Automatic generation of commit messages
 
 ## Install
 
 ```bash
-pip install ai-commit
+pip install py-ai-commit
 ```
 
 ## Usage
