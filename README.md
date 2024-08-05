@@ -4,9 +4,9 @@ Automatic generation of commit messages
 
 ## Install
 
-Place ai-commit in a location included in your PATH
-
-Such as `${HOME}/.local/bin` or `/usr/local/bin`
+```bash
+pip install ai-commit
+```
 
 ## Usage
 
