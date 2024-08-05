@@ -319,6 +319,8 @@ tiktoken==0.7.0
     # via langchain-openai
 tinycss2==1.3.0
     # via nbconvert
+tomlkit==0.13.0
+    # via py-ai-commit
 tornado==6.4.1
     # via ipykernel
     # via jupyter-client
