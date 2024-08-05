@@ -2,6 +2,8 @@
 
 Automatic generation of commit messages
 
+CAUTION: This is under development. changes may occur.
+
 ## Install
 
 ```bash
