@@ -1,6 +1,6 @@
 [project]
 name = "ai-commit"
-version = "0.1.0"
+version = "0.1.1"
 description = "Automatic generation of commit messages using AI"
 authors = [
     { name = "Ouvill", email = "contact@ouvill.net" }
