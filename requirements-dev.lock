@@ -56,7 +56,7 @@ comm==0.2.2
     # via ipykernel
 dataclasses-json==0.6.7
     # via py-ai-commit
-debugpy==1.8.3
+debugpy==1.8.5
     # via ipykernel
 decorator==5.1.1
     # via ipython
