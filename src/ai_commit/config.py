@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from dataclasses import dataclass
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, DataClassJsonMixin
 from typing import Optional
 import os
 from pathlib import Path
@@ -10,9 +10,8 @@ from tomlkit import parse
 from ai_commit.default_config import default_model, default_template
 
 
-@dataclass_json
 @dataclass
-class AppConfig:
+class AppConfig(DataClassJsonMixin):
     prompt: str
     model: str = "gpt-4o-mini"
 

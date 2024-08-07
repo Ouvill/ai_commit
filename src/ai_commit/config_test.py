@@ -1,9 +1,8 @@
-from pathlib import Path
-
 import pytest
 import os
 import json
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
+from pathlib import Path
 
 import tomlkit
 
@@ -16,7 +15,7 @@ def mock_config() -> AppConfig:
 
 
 @pytest.fixture
-def mock_json_file(tmp_path):
+def mock_json_file(tmp_path: Path):
     config_file = tmp_path / "config.json"
     config_data = {"prompt": "Test prompt", "model": "gpt-4-test"}
     config_file.write_text(json.dumps(config_data))
@@ -24,7 +23,7 @@ def mock_json_file(tmp_path):
 
 
 @pytest.fixture
-def mock_toml_file(tmp_path):
+def mock_toml_file(tmp_path: Path):
     config_file = tmp_path / "config.toml"
     config_data = {"prompt": "Test prompt", "model": "gpt-4-test"}
     with open(config_file, "w") as f:
@@ -32,7 +31,13 @@ def mock_toml_file(tmp_path):
     return config_file
 
 
-def test_json_config_repository_save(tmp_path, mock_config):
+def test_app_config_to_dict(mock_config: AppConfig):
+    mock_config_dict = mock_config.to_dict()
+    expect = {"prompt": "Test prompt", "model": "gpt-4-test"}
+    assert mock_config_dict == expect
+
+
+def test_json_config_repository_save(tmp_path: Path, mock_config: AppConfig):
     repo = JsonConfigRepository(tmp_path / "config.json")
     repo.save(mock_config)
 
@@ -42,7 +47,7 @@ def test_json_config_repository_save(tmp_path, mock_config):
     assert saved_data == mock_config.to_dict()
 
 
-def test_json_config_repository_load(mock_json_file):
+def test_json_config_repository_load(mock_json_file: Path):
     repo = JsonConfigRepository(mock_json_file)
     loaded_config = repo.load()
 
@@ -58,7 +63,7 @@ def test_json_config_repository_load_non_existent():
     assert loaded_config is None
 
 
-def test_toml_config_repository_load(mock_toml_file):
+def test_toml_config_repository_load(mock_toml_file: Path):
     repo = TomlConfigRepository(mock_toml_file)
     loaded_config = repo.load()
 
@@ -67,7 +72,7 @@ def test_toml_config_repository_load(mock_toml_file):
     assert loaded_config.model == "gpt-4-test"
 
 
-def test_config_service_save_config(mock_config):
+def test_config_service_save_config(mock_config: AppConfig):
     mock_repo = Mock(spec=JsonConfigRepository)
     service = ConfigService(mock_repo)
 
